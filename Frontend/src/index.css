@@ -1,0 +1,180 @@
+/* eslint-disable */
+/* csslint ignore:start */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* csslint ignore:end */
+
+@layer base {
+  :root {
+    /* Dark Cinematic Theme */
+    --background: 220 20% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 20% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 20% 6%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Neon Cyan Primary */
+    --primary: 185 100% 50%;
+    --primary-foreground: 220 20% 4%;
+
+    --secondary: 220 20% 12%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 185 100% 50%;
+    --accent-foreground: 220 20% 4%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 185 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom Properties */
+    --glow-cyan: 0 0 40px hsl(185 100% 50% / 0.4);
+    --glow-cyan-strong: 0 0 60px hsl(185 100% 50% / 0.6);
+    --gradient-dark: linear-gradient(180deg, hsl(220 20% 4%) 0%, hsl(220 25% 8%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(220 20% 10%) 0%, hsl(220 20% 6%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(185 100% 50% / 0.1) 0%, transparent 50%);
+  }
+
+  .dark {
+    --background: 220 20% 4%;
+    --foreground: 0 0% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer components {
+  /* Glowing Button */
+  .btn-glow {
+    @apply relative overflow-hidden bg-primary text-primary-foreground font-semibold px-8 py-3 rounded-lg transition-all duration-300;
+    box-shadow: var(--glow-cyan);
+  }
+
+  .btn-glow:hover {
+    @apply scale-105;
+    box-shadow: var(--glow-cyan-strong);
+  }
+
+  /* Outlined Button */
+  .btn-outline-glow {
+    @apply relative border-2 border-primary text-primary font-semibold px-8 py-3 rounded-lg transition-all duration-300;
+  }
+
+  .btn-outline-glow:hover {
+    @apply bg-primary/10;
+    box-shadow: var(--glow-cyan);
+  }
+
+  /* Card with glow */
+  .card-glow {
+    @apply bg-card rounded-xl border border-border transition-all duration-500;
+    background: var(--gradient-card);
+  }
+
+  .card-glow:hover {
+    @apply border-primary/50;
+    box-shadow: var(--glow-cyan);
+  }
+
+  /* Image overlay */
+  .image-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-0 transition-opacity duration-300;
+  }
+
+  .image-overlay:hover {
+    @apply opacity-100;
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-cyan-400 to-primary;
+  }
+
+  /* Section padding */
+  .section-padding {
+    @apply py-20 md:py-32 px-4 md:px-8;
+  }
+
+  /* Container */
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+
+  /* Skill badge */
+  .skill-badge {
+    @apply px-4 py-2 bg-secondary text-foreground text-sm font-medium rounded-full border border-border transition-all duration-300;
+  }
+
+  .skill-badge:hover {
+    @apply border-primary text-primary;
+  }
+
+  /* Nav link */
+  .nav-link {
+    @apply relative text-muted-foreground hover:text-foreground transition-colors duration-300;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(185 100% 50% / 0.3); }
+    50% { box-shadow: 0 0 40px hsl(185 100% 50% / 0.6); }
+  }
+
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+}
