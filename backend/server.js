@@ -15,6 +15,10 @@ import adminDashboardRoutes from './routes/adminDashboard.js';
 // Load environment variables
 dotenv.config();
 
+// Debug: Check if environment variables are loaded
+console.log('MONGODB_URI:', process.env.MONGODB_URI);
+console.log('PORT:', process.env.PORT);
+
 const app = express();
 const server = createServer(app);
 const PORT = process.env.PORT || 5001;
