@@ -3,7 +3,7 @@ services:
     name: tanmay-portfolio-backend
     env: node
     plan: free
-    buildCommand: npm install
+    buildCommand: npm ci && npm run postinstall
     startCommand: npm start
     healthCheckPath: /api/health
     envVars:

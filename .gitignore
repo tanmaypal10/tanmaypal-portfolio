@@ -74,6 +74,12 @@ coverage/
 # Optional npm cache directory
 .npm
 */.npm
+strict/
+*/strict/
+_cacache/
+*/_cacache/
+_update-notifier-last-checked
+*/_update-notifier-last-checked
 
 # Optional eslint cache
 .eslintcache
